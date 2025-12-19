@@ -1,11 +1,28 @@
 import os
+import time
+import threading
 import praw
 from dotenv import load_dotenv
 
 # Load variables from .env
 load_dotenv()
 
+# Global counter for removals
+removal_count = 0
+
+def print_stats():
+    """Periodically prints the total number of removed posts."""
+    while True:
+        time.sleep(3600)  # Log every 1 hour
+        print(f"[STATS] Total scams removed so far: {removal_count}")
+
 def run_bot():
+    global removal_count
+    
+    # Start the stats thread
+    stats_thread = threading.Thread(target=print_stats, daemon=True)
+    stats_thread.start()
+
     reddit = praw.Reddit(
         client_id=os.getenv("REDDIT_CLIENT_ID"),
         client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
@@ -34,6 +51,7 @@ def run_bot():
         if any(term in content for term in scam_terms):
             try:
                 submission.mod.remove()
+                removal_count += 1
                 print(f"Removed: {submission.title}")
             except Exception as e:
                 print(f"Failed to remove {submission.id}: {e}")

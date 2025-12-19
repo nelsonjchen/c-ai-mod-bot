@@ -5,6 +5,7 @@ A fast, lightweight Reddit moderation bot built with Python and `praw`, managed 
 ## Features
 - **Real-time Monitoring**: Uses Reddit's submission stream for instant action.
 - **Scam Detection**: Automatically removes posts containing pre-defined scam terms.
+- **Statistics**: Periodically logs the total number of removed posts to keeping track of impact.
 - **Lightweight**: Uses `uv` for dependency management and a slim Docker image.
 - **Easy Deployment**: Ready for TrueNAS or any Docker-compatible environment.
 - **Automated Builds**: GitHub Actions workflow included to build and push images to GHCR.
