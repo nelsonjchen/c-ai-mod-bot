@@ -7,6 +7,7 @@ A fast, lightweight Reddit moderation bot built with Python and `praw`, managed 
 - **Scam Detection**: Automatically removes posts containing pre-defined scam terms.
 - **Lightweight**: Uses `uv` for dependency management and a slim Docker image.
 - **Easy Deployment**: Ready for TrueNAS or any Docker-compatible environment.
+- **Automated Builds**: GitHub Actions workflow included to build and push images to GHCR.
 
 ## Prerequisites
 - [uv](https://github.com/astral-sh/uv) installed locally for development.
@@ -47,6 +48,14 @@ docker run -d \
   --env-file .env \
   reddit-bot
 ```
+
+## GitHub Actions
+
+This repository includes a GitHub Actions workflow that automatically:
+1. Builds a Docker image on every push to `main` or pull request.
+2. Pushes the image to the **GitHub Container Registry (GHCR)** on every push to `main`.
+
+The image will be available at: `ghcr.io/${{ github.repository }}:latest` (or tags).
 
 ## TrueNAS Deployment
 
