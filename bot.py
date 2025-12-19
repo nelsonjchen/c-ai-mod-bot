@@ -55,6 +55,8 @@ def run_bot():
                 print(f"Removed: {submission.title}")
             except Exception as e:
                 print(f"Failed to remove {submission.id}: {e}")
+        else:
+            print(f"Checked (Clean): {submission.title}")
 
 if __name__ == "__main__":
     run_bot()
