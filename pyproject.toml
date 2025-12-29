@@ -1,10 +1,10 @@
 [project]
 name = "c-ai-mod-bot"
 version = "0.1.0"
-description = "Add your description here"
+description = "A reddit bot for moderating c-ai scams"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
-    "praw>=7.8.1",
-    "python-dotenv>=1.2.1",
+    "praw",
+    "python-dotenv",
 ]
