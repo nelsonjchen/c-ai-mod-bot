@@ -50,7 +50,7 @@ def run_bot():
         
         if any(term in content for term in scam_terms):
             try:
-                submission.mod.remove()
+                submission.mod.remove(spam=True, mod_note="Automated removal by c-ai-mod-bot: https://github.com/nelsonjchen/c-ai-mod-bot")
                 removal_count += 1
                 print(f"Removed: {submission.title}")
             except Exception as e:
